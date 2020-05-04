@@ -81,7 +81,8 @@ class GameDetailComponent extends React.Component {
 			active_thele:false,
 			active_phucloi:false,
 			positon_rank:0,
-			data_ranking:[]
+			data_ranking:[],
+			isLogin:false
 		}
 	}
 	componentWillMount(){
@@ -314,13 +315,39 @@ class GameDetailComponent extends React.Component {
 		this.setState({active_bxh:false, active_thele:false, active_phucloi:true})
 	}
 
+	loginAction = () => {
+		const {server_err}=this.state;
+		if(!server_err){
+			if (typeof(Storage) !== "undefined") {
+				var currentPath = window.location.pathname;
+				localStorage.setItem("currentPath", currentPath);
+			} else {
+				console.log("Trình duyệt không hỗ trợ localStorage");
+			}
+			// window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=58306439627cac03c8e4259a87e2e1ca&redirect_uri=${window.location.protocol}//${window.location.host}/login&agencyid=0`)
+			window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		}else{
+			$('#myModal12').modal('show');
+		}
+	}
+	logoutAction = () => {
+		localStorage.removeItem("user");
+		// window.location.replace(
+		// 	`https://graph.vtcmobile.vn/oauth/authorize?client_id=58306439627cac03c8e4259a87e2e1ca&redirect_uri=${window.location.protocol}//${window.location.host}&action=logout&agencyid=0`,
+		// );
+
+		window.location.replace(
+			`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&redirect_uri=${window.location.protocol}//${window.location.host}&action=logout&agencyid=0`,
+		);
+	}
+
 
 
 	render() {
 		const {data, dataGiftcode, youtubeData, dialogLoginOpen, dialogRatingOpen, videoId, pointSubmit, showMore, message,gameCare, gameMoi,data_ranking, users,data_bxh,myPosition,item_award, message_error, show_award,show_award_error,
 			 snackVariant, openSnack,lightBoxOpen, lightBoxIndex, youtubeOpen, gameArticles, gameData,server, week, gameRanking}=this.props;
 		const { classes } = this.props;
-		const {iframeWidth, iframeHeight, year, widthImage, heightScreenShot, widthScreenShot, rankPosition, day, hour, minute, second, items, active_bxh, active_phucloi, active_thele}=this.state;
+		const {iframeWidth, iframeHeight, year, widthImage, heightScreenShot, widthScreenShot, rankPosition, day, hour, minute, second, items, active_bxh, active_phucloi, active_thele, isLogin}=this.state;
 		const { theme } = this.props;
 		const { primary, secondary } = theme.palette;
 		const { fullScreen } = this.props;
@@ -378,6 +405,14 @@ class GameDetailComponent extends React.Component {
 		return (gameData!==undefined)?(<div>	
 					<div id="top" class="py-3 container" style={{marginTop:55}}>
 					<div class="row">
+						{(isLogin)?(<ul class="box-account nav font-iCielPantonLight">
+							<li class="bg-acc nav-item text-center"><a class="d-block pt-03 text-orange" href="#" title=""><span class="text-white">Xin chào</span></a></li>
+							<li class="bg-acc nav-item text-center" onClick={this.logoutAction}><a class="d-block pt-03 font-italic text-orange" href="#" title="Đăng xuất">Đăng Xuất</a></li>
+							
+							
+						</ul>):(<ul class="box-account nav font-iCielPantonLight justify-content-end">
+								<li class="bg-acc nav-item text-center" onClick={this.loginAction}><a class="d-block pt-03 font-italic text-orange" href="#" title="Đăng xuất">Đăng Nhập</a></li>
+						</ul>)}
 						<div class="col-sm-9 px-1">
 							<div class="bg-white mb-2 content">
 								<div class="detail-bannergame position-relative overflow-hidden card border-0 shadow-ssm mb-0">

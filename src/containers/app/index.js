@@ -11,7 +11,7 @@ import { Route } from 'react-router-dom'
 // import Lucky_Live from '../lucky_live';
 // import Checkin from '../checkin';
 import Mission from '../mission';
-// import MenuAppBar from '../../components/MenuAppBar';
+import MenuAppBar from '../../components/MenuAppBar';
 import Game_detail from '../game_detail';
 // import Auction_detail from '../auction_detail';
 import History from '../shop_history';
@@ -34,8 +34,8 @@ class App extends React.Component {
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
 				{/* <div style={{maxWidth:"1200px", margin:"auto", background: this.state.backgroundColor }}> */}
 				<div style={{background: this.state.backgroundColor }}>
-				{/* <MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
-						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar> */}
+				<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
+						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>
 					<main ref={(c) => this.main = c}>
 						{/* <Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
@@ -58,11 +58,11 @@ class App extends React.Component {
 						<Route exact path="/vqmm/:id" component={Vong_Quay_May_Man} />
 						{/* <Route exact path="/history" component={History} /> */}
 						{/* <Route exact path="/lucky" component={Lucky} /> */}
-						<Route exact path="/gamedetail/" component={Game_detail} />
+						<Route exact path="/gamedetail" component={Game_detail} />
 						{/* <Route exact path="/help" component={Help} />
 						<Route exact path="/dieu-khoan" component={Dieukhoan} />
 						<Route exact path="/vip" component={Vip} /> */}
-						<Route exact path="/nhiem-vu" component={Mission} />
+						{/* <Route exact path="/nhiem-vu" component={Mission} /> */}
 						{/* <Route exact path="/inbox" component={Inbox} />
 						<Route exact path="/profile" component={Profile} />    
 						<Route exact path="/article" component={Article} />

@@ -46,7 +46,7 @@ class Game_detail extends React.Component {
 			data_bxh:{},
 			data_ranking:[],
 			endDateReceivedGift:0,
-			id_game:330307,
+			id_game:330333,
 			games:[],
 			myPosition:0,
 			isOpen:false,
@@ -56,24 +56,23 @@ class Game_detail extends React.Component {
 			item_award:{},
 			gameRanking:false,
 			week:'WEEK_BEFORE_LAST',
-			scoin_token:'NJdUu5%2f%2bUAlMTHiGPohIJ5VTIQN45mOggf1ek2qI5LHxXv9CSQrj5qJ41Cq410k8xY0EhrCchdcOa09E7f9njKfvFOqKAMLJVp2RDSDLH0mjS5zScxO%2fgk5vMvFQ%2fJ8WC%2bcK7nDg13yVO061eXbffcgyRKjrXKNHW4H9%2f7IGgQCZtLoZJ%2bW279%2fDHhACRKz2',
+			access_token:'',
+			isLogin:false,
 		};
 	}
 
 	componentWillMount(){
-		var id = this.getParamValue("service_id");
-		console.log('ID:', id)
-		var scoin_token=this.getParamValue("ud");
-		console.log('Scoin_Token:', scoin_token)
-		if(scoin_token!=="" && scoin_token!==undefined){
-			this.setState({scoin_token: scoin_token})
-		}		
-		this.setState({id_game:id})
+		
 	}
 
 	componentDidMount() {
 		const {id_game}= this.state;
-		this.getData(id_game)
+		var user = JSON.parse(localStorage.getItem("user"));
+		if(user!==null){
+			this.setState({isLogin:true, access_token:user.access_token})
+			this.getData(id_game)
+		}
+		
 		
 	}
 
@@ -91,7 +90,9 @@ class Game_detail extends React.Component {
 
 	getData=(id_game)=>{
 		var _this = this;
-		this.props.getAllGame().then(function () {
+		var user = JSON.parse(localStorage.getItem("user"));
+		console.log(user)
+		this.props.getAllGame(user.access_token).then(function () {
 			var data=_this.props.allGame
 			if(data.status==="01"){
 				var games=data.data.filter(v=>v.scoinGameId!==+id_game)
@@ -103,7 +104,7 @@ class Game_detail extends React.Component {
 				_this.setState({gameMoi:gameMoi, gameCare:gameCare, games:games, showMore: false, id_game:id_game})
 			}
 		});
-		this.props.getDataId(+id_game).then(function () {
+		this.props.getDataId(+id_game, user.access_token).then(function () {
 			var data=_this.props.data
 			if(data.status==="01"){
 				_this.props.getYoutubeData(data.data.youtubeChannelId, data.data.youtubeDefaultSearch);
@@ -213,9 +214,9 @@ class Game_detail extends React.Component {
 	
 	getDataBXH=()=>{
 		var _this = this;
-		const {scoin_token, id_game, week}=this.state;
-		console.log(week)
-		this.props.getDataBXH(330333, week, scoin_token).then(function () {
+		const {id_game, week}=this.state;
+		var user = JSON.parse(localStorage.getItem("user"));
+		this.props.getDataBXH(330333, week, user.access_token).then(function () {
 			_this.setState({users: _this.props.data_bxh.data.users, data_bxh: _this.props.data_bxh.data, myPosition: _this.props.data_bxh.data.myPosition})
 			// console.log(_this.props.data_bxh)
 		});
@@ -223,8 +224,9 @@ class Game_detail extends React.Component {
 
 	getDataRanking=()=>{
 		var _this = this;
-		const {scoin_token, id_game}=this.state
-		this.props.getDataRanking(330333, scoin_token).then(function () {
+		const {id_game}=this.state;
+		var user = JSON.parse(localStorage.getItem("user"));
+		this.props.getDataRanking(330333, user.access_token).then(function () {
 			_this.setState({data_ranking:_this.props.data_ranking.data.ranks, endDateReceivedGift: _this.props.data_ranking.data.endDateReceivedGift})
 		});
 	}
@@ -233,8 +235,8 @@ class Game_detail extends React.Component {
 		var _this = this;
 		var type=item.itemType
 		var new_item=item;
-		console.log(item)
-		const {scoin_token, id_game}=this.state;
+		var user = JSON.parse(localStorage.getItem("user"));
+		const {id_game}=this.state;
 		switch(type) {
 			case 'TURN_LUCKYSPIN':
 			  new_item.consumable=true;
@@ -261,7 +263,7 @@ class Game_detail extends React.Component {
 		if(item.received){
 			this.setState({show_award:true, item_award:new_item});
 		}else{
-			this.props.awards(item.itemId, 330333, scoin_token).then(function () {
+			this.props.awards(item.itemId, 330333, user.access_token).then(function () {
 				const data=_this.props.data_awards;
 				if(data.status==="01"){
 					_this.setState({show_award:true, item_award:new_item})
