@@ -69,7 +69,7 @@ class GameDetailComponent extends React.Component {
 			iframeWidth:230,
 			iframeHeight:250,
 			device:'',
-			widthImage:1024,
+			widthImage:450,
 			widthScreenShot:200,
 			rankPosition:1,
 			day:'00',
@@ -123,7 +123,7 @@ class GameDetailComponent extends React.Component {
 			return;
 		}
 		if (window.innerWidth > 1024) {
-			this.setState({ iframeWidth: 275, iframeHeight:400, widthScreenShot:200});
+			this.setState({ iframeWidth: 275, iframeHeight:400, widthScreenShot:200, widthImage:450});
 			return;
 		}
 	}
@@ -405,14 +405,6 @@ class GameDetailComponent extends React.Component {
 		return (gameData!==undefined)?(<div>	
 					<div id="top" class="py-3 container" style={{marginTop:55}}>
 					<div class="row">
-						{(isLogin)?(<ul class="box-account nav font-iCielPantonLight">
-							<li class="bg-acc nav-item text-center"><a class="d-block pt-03 text-orange" href="#" title=""><span class="text-white">Xin chào</span></a></li>
-							<li class="bg-acc nav-item text-center" onClick={this.logoutAction}><a class="d-block pt-03 font-italic text-orange" href="#" title="Đăng xuất">Đăng Xuất</a></li>
-							
-							
-						</ul>):(<ul class="box-account nav font-iCielPantonLight justify-content-end">
-								<li class="bg-acc nav-item text-center" onClick={this.loginAction}><a class="d-block pt-03 font-italic text-orange" href="#" title="Đăng xuất">Đăng Nhập</a></li>
-						</ul>)}
 						<div class="col-sm-9 px-1">
 							<div class="bg-white mb-2 content">
 								<div class="detail-bannergame position-relative overflow-hidden card border-0 shadow-ssm mb-0">

@@ -67,13 +67,7 @@ class Game_detail extends React.Component {
 
 	componentDidMount() {
 		const {id_game}= this.state;
-		var user = JSON.parse(localStorage.getItem("user"));
-		if(user!==null){
-			this.setState({isLogin:true, access_token:user.access_token})
-			this.getData(id_game)
-		}
-		
-		
+		this.getData(id_game)
 	}
 
 	getParamValue=(key)=>{
@@ -90,9 +84,7 @@ class Game_detail extends React.Component {
 
 	getData=(id_game)=>{
 		var _this = this;
-		var user = JSON.parse(localStorage.getItem("user"));
-		console.log(user)
-		this.props.getAllGame(user.access_token).then(function () {
+		this.props.getAllGame().then(function () {
 			var data=_this.props.allGame
 			if(data.status==="01"){
 				var games=data.data.filter(v=>v.scoinGameId!==+id_game)
@@ -104,7 +96,7 @@ class Game_detail extends React.Component {
 				_this.setState({gameMoi:gameMoi, gameCare:gameCare, games:games, showMore: false, id_game:id_game})
 			}
 		});
-		this.props.getDataId(+id_game, user.access_token).then(function () {
+		this.props.getDataId(+id_game).then(function () {
 			var data=_this.props.data
 			if(data.status==="01"){
 				_this.props.getYoutubeData(data.data.youtubeChannelId, data.data.youtubeDefaultSearch);
@@ -186,7 +178,9 @@ class Game_detail extends React.Component {
 	}
 
 	loginAction = () => {
-		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}/login&agencyid=0`)
+		// window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&redirect_uri=${window.location.protocol}//${window.location.host}&action=login&agencyid=0`);
+		window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		// window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}/login&agencyid=0`)
 	}
 
 	closeLightBox = () => {
@@ -207,9 +201,16 @@ class Game_detail extends React.Component {
 	}
 
 	getWithWeekBXH=(weeked)=>{
-		this.setState({week:weeked},()=>{
-			this.getDataBXH();
-		})
+		var user = JSON.parse(localStorage.getItem("user"));
+		if(user!==null){
+			this.setState({week:weeked},()=>{
+				this.getDataBXH();
+			})
+		}else{
+			this.loginAction()
+		}
+		// this.loginAction();
+	
 	}
 	
 	getDataBXH=()=>{

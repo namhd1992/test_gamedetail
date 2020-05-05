@@ -188,19 +188,13 @@ export const awards = (itemId, service_id, token) => {
 	}
 }
 
-export const getDataId = (id, token) => {
-  var header = {
-    headers: {
-      "content-type": "application/json",
-      "Authorization": "bearer " + token,
-    }
-  }
+export const getDataId = (id) => {
   return dispatch => {
     dispatch({
       type: GAME_REQUEST
     })
-    var url = Ultilities.base_url() + "game/detail?service_id=" + id;
-    return axios.get(url, header).then(function (response) {
+    var url = Ultilities.base_url() + "anonymous/game/detail?service_id=" + id;
+    return axios.get(url).then(function (response) {
       dispatch({
         type: GAME_DETAIL_RESPONSE,
         dataDetail: response.data
@@ -213,20 +207,13 @@ export const getDataId = (id, token) => {
   }
 }
 
-export const getAllGame = (token) => {
-  console.log(token)
-  var header = {
-    headers: {
-      "content-type": "application/json",
-      "Authorization": "bearer " + token,
-    }
-  }
+export const getAllGame = () => {
   return dispatch => {
     dispatch({
       type: GAME_REQUEST
     })
-    var url = Ultilities.base_url() + "game/all";
-    return axios.get(url, header).then(function (response) {
+    var url = Ultilities.base_url() + "anonymous/game/all";
+    return axios.get(url).then(function (response) {
       dispatch({
         type: ALL_GAME_RESPONSE,
         data: response.data
