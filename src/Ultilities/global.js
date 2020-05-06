@@ -71,8 +71,8 @@ class Ultilities {
 		// if (env === "dev") {
 		// 	return "https://dev.splay.vn/";
 		// } else {
-			// return "https://server.splay.vn/";
-			return "http://171.244.14.44:9093/";
+			return "https://server-event.splay.vn/";
+			// return "http://171.244.14.44:9093/";
 		// }
 	}
 
