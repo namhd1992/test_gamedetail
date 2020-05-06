@@ -808,15 +808,14 @@ class GameDetailComponent extends React.Component {
 							<h6 class="text-left"><span class="badge badge-pill badge-info">#</span> Thứ hạng của bạn</h6>
 							<table class="table table-striped text-center mt-3 small" style={{lineHeight:'15px'}}>
 								<tbody>
-								<tr>
+								{(data_bxh.myPosition > 0 && data_bxh.myPosition < 100) ? (<tr>
 									<td>{data_bxh.myPosition}</td>
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
-								</tr>
-								{(data_bxh.myPosition > 100) ? (<tr>
+								</tr>):(<tr>
 									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
 									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
-								</tr>):(<tr></tr>)}
+								</tr>)}
 								</tbody>
 							</table>
 							
@@ -843,15 +842,14 @@ class GameDetailComponent extends React.Component {
 							<h6 class="text-left"><span class="badge badge-pill badge-info">#</span> Thứ hạng của bạn</h6>
 							<table class="table table-striped text-center mt-3 small">
 								<tbody>
-								<tr>
+								{(data_bxh.myPosition > 0 && data_bxh.myPosition < 100) ? (<tr>
 									<td>{data_bxh.myPosition}</td>
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
-								</tr>
-								{(data_bxh.myPosition > 100) ? (<tr>
+								</tr>):(<tr>
 									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
 									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
-								</tr>):(<tr></tr>)}
+								</tr>)}
 								</tbody>
 							</table>
 						</div>
@@ -877,15 +875,14 @@ class GameDetailComponent extends React.Component {
 							<h6 class="text-left"><span class="badge badge-pill badge-info">#</span> Thứ hạng của bạn</h6>
 							<table class="table table-striped text-center mt-3 small">
 								<tbody>
-								<tr>
+								{(data_bxh.myPosition > 0 && data_bxh.myPosition < 100) ? (<tr>
 									<td>{data_bxh.myPosition}</td>
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
-								</tr>
-								{(data_bxh.myPosition > 100) ? (<tr>
+								</tr>):(<tr>
 									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
 									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
-								</tr>):(<tr></tr>)}
+								</tr>)}
 								</tbody>
 							</table>
 						</div>
