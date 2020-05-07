@@ -649,8 +649,6 @@ class GameDetailComponent extends React.Component {
 											</a>
 										)
 								})}
-								
-								
 							</div>
 							
 						</div>
