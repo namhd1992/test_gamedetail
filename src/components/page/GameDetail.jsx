@@ -811,8 +811,7 @@ class GameDetailComponent extends React.Component {
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
 								</tr>):(<tr>
-									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
-									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
+									<td colspan="2">Chỉ thống kê đến Top 100. <a href="https://scoin.vn/nap-game" target="_blank">Nạp thêm</a> hoặc <a data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ</a></td>
 								</tr>)}
 								</tbody>
 							</table>
@@ -845,8 +844,7 @@ class GameDetailComponent extends React.Component {
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
 								</tr>):(<tr>
-									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
-									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
+									<td colspan="2">Chỉ thống kê đến Top 100. <a href="https://scoin.vn/nap-game" target="_blank">Nạp thêm</a> hoặc <a data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ</a></td>
 								</tr>)}
 								</tbody>
 							</table>
@@ -878,8 +876,7 @@ class GameDetailComponent extends React.Component {
 									<td>{data_bxh.myGameName}</td>
 									<td>{data_bxh.myRankName} {(data_bxh.myRankIconUrl!==null)?(<img src={data_bxh.myRankIconUrl} width="30" height="30" />):(<div></div>)}</td>
 								</tr>):(<tr>
-									<td colspan="2" class="font-italic">Chỉ thống kê đến Top 100</td>
-									<td><a type="button" class="btn btn-info btn-sm" data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ &rarr;</a></td>
+									<td colspan="2">Chỉ thống kê đến Top 100. <a href="https://scoin.vn/nap-game" target="_blank">Nạp thêm</a> hoặc <a data-toggle="tab" href="#thele" onClick={this.changeTabTheLe}>Xem thể lệ</a></td>
 								</tr>)}
 								</tbody>
 							</table>
