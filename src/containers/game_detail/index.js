@@ -277,7 +277,7 @@ class Game_detail extends React.Component {
 		this.setState({show_award_error:false});
 	}
 	closeAward=()=>{
-		this.setState({show_award:false});
+		delete this.state.item_award;
 	}
 
 	render() {

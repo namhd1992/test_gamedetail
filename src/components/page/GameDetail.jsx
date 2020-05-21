@@ -784,7 +784,7 @@ class GameDetailComponent extends React.Component {
 						
 						{/* <!-- Tab panes --> */}
 						<div class="tab-content">
-						<div class="tab-pane active" id="tuantruongnua">
+						<div class="tab-pane active" id="tuantruongnua" style={{height:400, overflowY:'auto'}}>
 							<table class="table table-striped text-center mt-3 small" style={{lineHeight:'15px'}}>
 								<thead>
 								<tr>
@@ -817,7 +817,7 @@ class GameDetailComponent extends React.Component {
 							</table>
 							
 						</div>
-						<div class="tab-pane fade" id="tuantruoc">
+						<div class="tab-pane fade" id="tuantruoc" style={{height:400, overflowY:'auto'}}>
 							<table class="table table-striped text-center mt-3 small" style={{lineHeight:'15px'}}>
 								<thead>
 								<tr>
@@ -849,7 +849,7 @@ class GameDetailComponent extends React.Component {
 								</tbody>
 							</table>
 						</div>
-						<div class="tab-pane fade" id="tuannay">
+						<div class="tab-pane fade" id="tuannay" style={{height:400, overflowY:'auto'}}>
 							<table class="table table-striped text-center mt-3 small" style={{lineHeight:'15px'}}>
 								<thead>
 								<tr>
